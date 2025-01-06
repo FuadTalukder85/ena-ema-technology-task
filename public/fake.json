@@ -1,0 +1,20 @@
+{
+  "groceries": {
+    "limit": "254"
+  },
+  "transportation": {
+    "limit": "105"
+  },
+  "healthcare": {
+    "limit": "111"
+  },
+  "utility": {
+    "limit": "1211"
+  },
+  "charity": {
+    "limit": "121"
+  },
+  "miscellaneous": {
+    "limit": "50"
+  }
+}

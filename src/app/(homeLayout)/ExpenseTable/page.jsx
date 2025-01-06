@@ -1,7 +1,7 @@
 import React from "react";
 import "./ExpenseTable.css";
-import Container from "@/app/components/Container/Container";
-import DailyExpense from "@/app/components/DailyExpense/DailyExpense";
+import Container from "@/components/Container/Container";
+import DailyExpense from "@/components/DailyExpense/DailyExpense";
 const ExpenseTable = () => {
   return (
     <div className="expense-table">

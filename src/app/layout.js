@@ -1,5 +1,6 @@
 import { Onest } from "next/font/google";
 import "./globals.css";
+import Providers from "@/provider/Provider";
 
 const OnestSans = Onest({
   variable: "--font-onest",
@@ -14,7 +15,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${OnestSans.variable}`}>{children}</body>
+      <body className={`${OnestSans.variable}`}>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
