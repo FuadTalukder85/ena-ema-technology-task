@@ -1,6 +1,12 @@
 {
   "groceries": {
-    "limit": "254"
+    "date": "05.01.2025",
+    "limit": "254",
+    "expense01": "5",
+    "expense02": "10",
+    "expenseFor": "groceries",
+    "purpose01": "weekly groceries",
+    "purpose02": "buy egg"
   },
   "transportation": {
     "limit": "105"
@@ -9,7 +15,10 @@
     "limit": "111"
   },
   "utility": {
-    "limit": "1211"
+    "limit": "1211",
+    "expense": "200",
+    "expenseFor": "utility",
+    "purpose": "water bill"
   },
   "charity": {
     "limit": "121"

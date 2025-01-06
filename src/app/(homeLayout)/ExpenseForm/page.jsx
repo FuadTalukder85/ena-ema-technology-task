@@ -3,14 +3,17 @@ import React from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import "./ExpenseForm.css";
+import { useAddTasksMutation } from "@/redux/features/tasksApi/TasksApi";
 
 const ExpenseForm = () => {
-  const { register, handleSubmit } = useForm();
+  const [addTasks] = useAddTasksMutation();
+  const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     const transformedData = Object.fromEntries(
       Object.entries(data).map(([key, value]) => [key, { limit: value }])
     );
-    console.log(transformedData);
+    addTasks(transformedData);
+    reset();
   };
   return (
     <div className="container-center">
