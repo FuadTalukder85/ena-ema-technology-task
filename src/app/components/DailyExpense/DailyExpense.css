@@ -1,0 +1,33 @@
+.dailyExpense-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+.dailyExpense-input form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 20px;
+  background-color: #f9fafb;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dailyExpense-input form input,
+form select {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid #d2d6db;
+  outline: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.dailyExpense-input form button {
+  align-self: flex-end;
+}

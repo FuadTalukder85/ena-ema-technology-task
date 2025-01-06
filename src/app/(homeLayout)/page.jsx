@@ -4,8 +4,8 @@ import Link from "next/link";
 const page = () => {
   return (
     <div className="root-div">
-      <Link href="/Expense">
-        <button className="btn-limit">Set your limit</button>
+      <Link href="/ExpenseForm">
+        <button className="btn-primary">Set your limit</button>
       </Link>
     </div>
   );

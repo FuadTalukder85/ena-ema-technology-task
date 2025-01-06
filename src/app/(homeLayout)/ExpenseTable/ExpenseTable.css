@@ -1,0 +1,39 @@
+.expense-table {
+  margin-top: 50px;
+}
+.expense-table h3 {
+  text-align: center;
+  margin-top: 50px;
+  color: #2a4766;
+}
+table {
+  width: 100%;
+  margin-top: 15px;
+  border-collapse: collapse;
+  color: #2a4766;
+}
+th,
+td {
+  border: 1px solid #2a4766;
+  padding: 5px;
+}
+
+.action {
+  display: flex;
+  justify-content: center;
+}
+.btn-update {
+  border: none;
+  background-color: #2a4766;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.btn-delete {
+  border: none;
+  background-color: rgb(221, 13, 13);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
