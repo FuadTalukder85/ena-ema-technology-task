@@ -27,3 +27,27 @@
     "limit": "50"
   }
 }
+{
+  "_id": "677d46a6d310429170361e1a",
+  "month": "December",
+  "totalLimit": "2100",
+  "totalExpense": "355",
+  "groceriesExpense": "20",
+  "transportationExpense": "100",
+  "healthcareExpense": "19",
+  "utilityExpense": "21",
+  "charityExpense": "11",
+  "miscellaneousExpense": "105",
+}
+{
+  "_id": "677d46a6d310429170361e1d",
+  "month": "January",
+  "totalLimit": "11111",
+  "totalExpense": "555",
+  "groceriesExpense": "55",
+  "transportationExpense": "10",
+  "healthcareExpense": "9",
+  "utilityExpense": "21",
+  "charityExpense": "11",
+  "miscellaneousExpense": "15",
+}

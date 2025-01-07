@@ -43,3 +43,10 @@ span {
 .btn-primary:hover {
   background-color: #044a8f;
 }
+.error-msg span {
+  display: block;
+  color: #dd1111;
+  font-size: 14px;
+  text-align: left;
+  margin-top: 4px;
+}

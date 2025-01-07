@@ -7,21 +7,27 @@ import useCurrentDateAndMonth from "@/hooks/useCurrentDate";
 const Limitation = () => {
   const { data: tasks } = useGetTasksQuery();
   const { monthName } = useCurrentDateAndMonth();
+  const currentMonthData = tasks?.filter((task) => task.month === monthName);
+  // console.log("currentMonthData", currentMonthData);
 
-  // Filter the tasks for January
-  const januaryData = tasks?.filter((task) => task.month === monthName);
-  console.log(januaryData);
+  const firstData = currentMonthData?.[0];
+  // console.log("firstData", firstData);
 
   return (
     <div className="limitation-main">
       <div className="limitation">
-        {januaryData?.map((limit) => (
-          <div key={limit._id} className="limitation-content">
-            <h5>Limit for Grocery {limit.groceries.limit} : </h5> <p>$20.00</p>
-          </div>
-        ))}
+        {firstData &&
+          Object.entries(firstData).map(([key, value]) => {
+            if (typeof value === "object" && value.limit) {
+              return (
+                <div key={key} className="limitation-content">
+                  <h5>Limit for {key[0].toUpperCase() + key.slice(1)}: </h5>
+                  <p>${value.limit}.00</p>
+                </div>
+              );
+            }
+          })}
       </div>
-
       <button type="submit" className="btn-primary">
         Update monthly expense
       </button>

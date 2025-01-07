@@ -44,10 +44,7 @@
   border-radius: 5px;
   box-sizing: border-box;
 }
-.error-msg {
-  color: #dd1111;
-  font-size: 14px;
-}
+
 .limit-div {
   display: flex;
   justify-content: end;
