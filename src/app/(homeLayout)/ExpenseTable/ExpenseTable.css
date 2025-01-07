@@ -1,9 +1,17 @@
 .expense-table {
-  margin-top: 50px;
+  margin-top: 20px;
+}
+.expense-content {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  margin-top: 15px;
+}
+.expense-content > div {
+  flex: 1;
 }
 .expense-table h3 {
   text-align: center;
-  margin-top: 50px;
   color: #2a4766;
 }
 table {

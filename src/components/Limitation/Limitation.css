@@ -1,0 +1,37 @@
+.limitation-main {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  padding: 20px;
+  background-color: #f9fafb;
+  color: #2a4766;
+  font-size: 18px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.limitation {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+.limitation > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.limitation-content {
+  display: flex;
+  align-items: center;
+  border: 1px solid #d2d6db;
+  padding: 5px;
+  border-radius: 5px;
+}
+.limitation-content p {
+  font-weight: 500;
+}
+
+.limitation-main button {
+  align-self: flex-end;
+}
