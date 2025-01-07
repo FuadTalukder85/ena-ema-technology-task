@@ -1,4 +1,4 @@
-import { baseApi } from "@/redux/api/baseAPi";
+import { baseApi } from "@/redux/api/baseApi";
 
 const TasksApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -10,6 +10,13 @@ const TasksApi = baseApi.injectEndpoints({
       }),
       providesTags: ["tasks"],
     }),
+    getTasks: builder.query({
+      query: () => ({
+        url: "/api/tasks",
+        method: "GET",
+      }),
+      providesTags: ["tasks"],
+    }),
   }),
 });
-export const { useAddTasksMutation } = TasksApi;
+export const { useAddTasksMutation, useGetTasksQuery } = TasksApi;

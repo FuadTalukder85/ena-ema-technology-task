@@ -3,17 +3,36 @@ import React from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import "./ExpenseForm.css";
-import { useAddTasksMutation } from "@/redux/features/tasksApi/TasksApi";
+import {
+  useAddTasksMutation,
+  useGetTasksQuery,
+} from "@/redux/features/tasksApi/TasksApi";
+import useCurrentDateAndMonth from "@/hooks/useCurrentDate";
 
 const ExpenseForm = () => {
+  const { monthName } = useCurrentDateAndMonth();
   const [addTasks] = useAddTasksMutation();
-  const { register, handleSubmit, reset } = useForm();
-  const onSubmit = (data) => {
+  const { data: tasks, refetch } = useGetTasksQuery();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = async (data) => {
     const transformedData = Object.fromEntries(
       Object.entries(data).map(([key, value]) => [key, { limit: value }])
     );
-    addTasks(transformedData);
-    reset();
+    const currentMonth = tasks.find((task) => task.month === monthName);
+    if (currentMonth) {
+      alert(
+        "you can add monthly limit only once, if you want to update limit please click update limit button"
+      );
+    } else {
+      await addTasks(transformedData);
+      reset();
+      refetch();
+    }
   };
   return (
     <div className="container-center">
@@ -39,16 +58,22 @@ const ExpenseForm = () => {
               <input
                 type="number"
                 placeholder="Limit for Groceries"
-                {...register("groceries")}
+                {...register("groceries", { required: true })}
               />
+              <p className="error-msg">
+                {errors.groceries && <span>This field is required</span>}
+              </p>
             </div>
             <div className="">
               <label htmlFor="">Transportation*</label>
               <input
                 type="number"
                 placeholder="Limit for Transportation"
-                {...register("transportation")}
+                {...register("transportation", { required: true })}
               />
+              <p className="error-msg">
+                {errors.transportation && <span>This field is required</span>}
+              </p>
             </div>
           </div>
           <div className="form-style">
@@ -57,16 +82,22 @@ const ExpenseForm = () => {
               <input
                 type="number"
                 placeholder="Limit for Healthcare"
-                {...register("healthcare")}
+                {...register("healthcare", { required: true })}
               />
+              <p className="error-msg">
+                {errors.healthcare && <span>This field is required</span>}
+              </p>
             </div>
             <div className="">
               <label htmlFor="">Utility*</label>
               <input
                 type="number"
                 placeholder="Limit for Utility"
-                {...register("utility")}
+                {...register("utility", { required: true })}
               />
+              <p className="error-msg">
+                {errors.utility && <span>This field is required</span>}
+              </p>
             </div>
           </div>
           <div className="form-style">
@@ -75,16 +106,22 @@ const ExpenseForm = () => {
               <input
                 type="number"
                 placeholder="Limit for Charity"
-                {...register("charity")}
+                {...register("charity", { required: true })}
               />
+              <p className="error-msg">
+                {errors.charity && <span>This field is required</span>}
+              </p>
             </div>
             <div className="">
               <label htmlFor="">Miscellaneous*</label>
               <input
                 type="number"
                 placeholder="Limit for Miscellaneous"
-                {...register("miscellaneous")}
+                {...register("miscellaneous", { required: true })}
               />
+              <p className="error-msg">
+                {errors.miscellaneous && <span>This field is required</span>}
+              </p>
             </div>
           </div>
           <div className="limit-div">

@@ -6,5 +6,6 @@ export const baseApi = createApi({
     baseUrl: "http://localhost:2025",
     credentials: "include",
   }),
+  tagTypes: ["tasks"],
   endpoints: () => ({}),
 });
