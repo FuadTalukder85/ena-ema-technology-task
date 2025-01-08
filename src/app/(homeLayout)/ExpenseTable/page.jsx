@@ -1,20 +1,22 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Container from "@/components/Container/Container";
 import "./ExpenseTable.css";
-import { useGetTasksQuery } from "@/redux/features/tasksApi/TasksApi";
+import {
+  useDeleteTasksMutation,
+  useGetTasksQuery,
+} from "@/redux/features/tasksApi/TasksApi";
 import useCurrentDateAndMonth from "@/hooks/useCurrentDate";
 import Link from "next/link";
 const ExpenseTable = () => {
-  const { data: tasks } = useGetTasksQuery();
+  const { data: tasks, refetch } = useGetTasksQuery();
+  const [deleteTasks] = useDeleteTasksMutation();
   const { monthName, formattedDate } = useCurrentDateAndMonth();
 
-  // Dynamically calculate the number of days in the current month
   const currentYear = new Date().getFullYear();
-  const currentMonth = new Date().getMonth(); // Months are 0-indexed in JavaScript
+  const currentMonth = new Date().getMonth();
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
-  // Generate an array of dates for the current month
   const allDates = Array.from(
     { length: daysInMonth },
     (_, i) =>
@@ -25,15 +27,33 @@ const ExpenseTable = () => {
       formattedDate.split(".")[2]
   );
 
-  // Filter data for the current month
   const currentMonthData =
     tasks?.filter((task) => task.month === monthName) || [];
 
-  // Create a map of tasks by date for easier lookup
   const taskByDate = currentMonthData.reduce((acc, task) => {
     acc[task.date] = task;
     return acc;
   }, {});
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  const handleDelete = (id) => {
+    deleteTasks(id);
+    refetch();
+    alert("Task deleted successfully");
+    setIsOpen(false);
+  };
+
+  const toggleModal = (date) => {
+    if (!taskByDate[date]) {
+      alert("No data exists for this date");
+      return;
+    }
+    setSelectedDate(date);
+    setIsOpen(true);
+  };
+
   return (
     <div className="expense-table">
       <Container>
@@ -44,7 +64,7 @@ const ExpenseTable = () => {
           <div>
             <Link href="/ExpenseForm">
               <button type="submit" className="btn-primary">
-                Monthly Expanse Limits
+                Monthly Expense Limits
               </button>
             </Link>
           </div>
@@ -63,7 +83,7 @@ const ExpenseTable = () => {
             </tr>
           </thead>
           <tbody>
-            {allDates?.map((date) => {
+            {allDates.map((date) => {
               const task = taskByDate[date] || {};
               return (
                 <tr key={date}>
@@ -101,7 +121,12 @@ const ExpenseTable = () => {
                   <td>
                     <div className="action">
                       <button className="btn-update">Edit</button>
-                      <button className="btn-delete">Delete</button>
+                      <button
+                        onClick={() => toggleModal(date)}
+                        className="btn-delete"
+                      >
+                        Delete
+                      </button>
                     </div>
                   </td>
                 </tr>
@@ -109,6 +134,33 @@ const ExpenseTable = () => {
             })}
           </tbody>
         </table>
+        {/* Delete Modal */}
+        {isOpen && (
+          <div className="modal-content">
+            <div className="modal-content-2">
+              <button
+                onClick={() => setIsOpen(false)}
+                className="modal-close-btn"
+              >
+                ✖
+              </button>
+              <p>
+                Are you sure you want to delete the data for {selectedDate}?
+              </p>
+              <div className="modal-actions">
+                <button onClick={() => setIsOpen(false)} className="btn-cancel">
+                  No, cancel
+                </button>
+                <button
+                  onClick={() => handleDelete(taskByDate[selectedDate]._id)}
+                  className="btn-confirm"
+                >
+                  Yes, I'm sure
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </Container>
     </div>
   );
