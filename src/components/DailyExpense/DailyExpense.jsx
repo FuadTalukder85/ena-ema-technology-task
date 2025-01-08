@@ -37,7 +37,10 @@ const DailyExpense = () => {
 
   const onSubmit = (data) => {
     const { expense, item, purpose } = data;
-
+    if (!currentStats) {
+      alert("Please add your monthly limit");
+      return;
+    }
     // Set selected item and amount
     setSelectedItem(item);
     setSelectedAmount(expense);
@@ -46,7 +49,6 @@ const DailyExpense = () => {
     const categoryLimit = currentTask?.[item.toLowerCase()]?.limit || 0;
     const categoryExpense = currentStats?.[`${item.toLowerCase()}Expense`] || 0;
     const remainingLimit = categoryLimit - categoryExpense;
-
     // console.log(`Remaining Limit for ${item}:`, remainingLimit);
 
     // Validate if the expense exceeds the remaining limit

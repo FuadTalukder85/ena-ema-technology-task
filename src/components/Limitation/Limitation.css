@@ -1,8 +1,8 @@
 .limitation-main {
+  width: 600px;
   display: flex;
   flex-direction: column;
   margin-top: 15px;
-  padding: 20px;
   background-color: #f9fafb;
   color: #2a4766;
   font-size: 18px;
@@ -14,18 +14,18 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-  padding: 20px;
+  padding-bottom: 20px;
 }
 .limitation > div {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 .limitation-content {
   display: flex;
-  align-items: center;
   border: 1px solid #d2d6db;
-  padding: 5px;
+  background-color: white;
+  padding: 9px;
   border-radius: 5px;
 }
 .limitation-content p {
@@ -34,4 +34,8 @@
 
 .limitation-main button {
   align-self: flex-end;
+}
+.limitation-content h5,
+.limitation-content p {
+  margin: 0;
 }

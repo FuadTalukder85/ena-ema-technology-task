@@ -3,13 +3,13 @@
   justify-content: center;
   align-items: center;
   margin-top: 15px;
+  width: 100%;
 }
 .dailyExpense-input form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
   width: 100%;
-  max-width: 400px;
   margin-bottom: 20px;
   background-color: #f9fafb;
   padding: 20px;
@@ -26,8 +26,13 @@ form select {
   outline: none;
   border-radius: 5px;
   box-sizing: border-box;
+  margin: 0;
 }
 
 .dailyExpense-input form button {
   align-self: flex-end;
+}
+.dailyExpense-input form input,
+p {
+  margin: 0;
 }

@@ -1,0 +1,19 @@
+.expense-content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  gap: 40px;
+}
+.expense-content > div {
+  flex: 1;
+}
+.expense-content h3 {
+  text-align: center;
+  color: #2a4766;
+  margin-top: 20px;
+}
+.summary-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}

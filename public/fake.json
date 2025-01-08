@@ -51,3 +51,76 @@
   "charityExpense": "11",
   "miscellaneousExpense": "15",
 }
+[
+  {
+    "_id": "677d7d5d97eda9cabf20166e",
+    "date": "31.12.2024",
+    "month": "December",
+    "groceries": {
+      "limit": "55",
+      "expense1": "5",
+      "purpose1": "jani na",
+      "item": "Groceries",
+      "expense2": "5",
+      "purpose2": "4545ffg",
+      "expense3": "5",
+      "purpose3": "dfg",
+      "expense4": "5",
+      "purpose4": "jani na",
+      "expense5": "10",
+      "purpose5": "jani na"
+    },
+    "transportation": {
+      "limit": "55"
+    },
+    "healthcare": {
+      "limit": "55"
+    },
+    "utility": {
+      "limit": "55"
+    },
+    "charity": {
+      "limit": "55"
+    },
+    "miscellaneous": {
+      "limit": "55"
+    }
+  },
+  {
+    "_id": "677dfbdf695ae009263d198f",
+    "date": "08.01.2025",
+    "month": "January",
+    "groceries": {
+      "limit": "333",
+      "todayExpense": "14",
+      "expense1": "5",
+      "purpose1": "Jani na",
+      "item": "Groceries",
+      "expense2": "9",
+      "purpose2": "Weekli grocery"
+    },
+    "transportation": {
+      "limit": "333",
+      "todayExpense": "0",
+    },
+    "healthcare": {
+      "limit": "333",
+      "todayExpense": "45",
+      "expense1": "45",
+      "purpose1": "Jani na",
+      "item": "Healthcare"
+    },
+    "utility": {
+      "limit": "333",
+      "todayExpense": "0",
+    },
+    "charity": {
+      "limit": "333",
+      "todayExpense": "0",
+    },
+    "miscellaneous": {
+      "limit": "333",
+      "todayExpense": "0",
+    }
+  }
+]

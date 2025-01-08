@@ -41,9 +41,9 @@ const ExpenseForm = () => {
           <div>
             <h2 className="">Set Monthly Spending Limits</h2>
           </div>
-          <Link href="/ExpenseTable">
+          <Link href="/ManageExpense">
             <button type="submit" className="btn-primary">
-              Your daily expense
+              Add daily expense
             </button>
           </Link>
         </div>
@@ -125,6 +125,9 @@ const ExpenseForm = () => {
             </div>
           </div>
           <div className="limit-div">
+            <button type="submit" className="btn-primary">
+              Update monthly expense
+            </button>
             <button type="submit" className="btn-primary">
               Set limits
             </button>
