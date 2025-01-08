@@ -17,6 +17,13 @@ const TasksApi = baseApi.injectEndpoints({
       }),
       providesTags: ["tasks"],
     }),
+    updateTasks: builder.mutation({
+      query: ({ id, body }) => ({
+        url: `/api/tasks/${id}`,
+        method: "PUT",
+        body,
+      }),
+    }),
     deleteTasks: builder.mutation({
       query: (query) => ({
         url: `/api/tasks/${query}`,
@@ -26,5 +33,9 @@ const TasksApi = baseApi.injectEndpoints({
     }),
   }),
 });
-export const { useAddTasksMutation, useGetTasksQuery, useDeleteTasksMutation } =
-  TasksApi;
+export const {
+  useAddTasksMutation,
+  useGetTasksQuery,
+  useUpdateTasksMutation,
+  useDeleteTasksMutation,
+} = TasksApi;

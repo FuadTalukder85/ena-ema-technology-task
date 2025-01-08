@@ -4,6 +4,7 @@ import Limitation from "@/components/Limitation/Limitation";
 import React from "react";
 import "./ManageExpense.css";
 import Link from "next/link";
+// import UpdateDailyExpense from "@/components/Modal/UpdateDailyExpense";
 
 const ManageExpense = () => {
   return (
@@ -25,6 +26,7 @@ const ManageExpense = () => {
           </button>
         </Link>
       </div>
+      {/* <UpdateDailyExpense></UpdateDailyExpense> */}
     </Container>
   );
 };

@@ -5,12 +5,16 @@ import "./ExpenseTable.css";
 import {
   useDeleteTasksMutation,
   useGetTasksQuery,
+  useUpdateTasksMutation,
 } from "@/redux/features/tasksApi/TasksApi";
 import useCurrentDateAndMonth from "@/hooks/useCurrentDate";
 import Link from "next/link";
+import UpdateDailyExpense from "@/components/Modal/UpdateDailyExpense";
+
 const ExpenseTable = () => {
   const { data: tasks, refetch } = useGetTasksQuery();
   const [deleteTasks] = useDeleteTasksMutation();
+  const [updateTasks] = useUpdateTasksMutation();
   const { monthName, formattedDate } = useCurrentDateAndMonth();
 
   const currentYear = new Date().getFullYear();
@@ -35,6 +39,7 @@ const ExpenseTable = () => {
     return acc;
   }, {});
 
+  // Delete modal
   const [isOpen, setIsOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
 
@@ -52,6 +57,22 @@ const ExpenseTable = () => {
     }
     setSelectedDate(date);
     setIsOpen(true);
+  };
+
+  // Update modal
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
+  const [selectedTask, setSelectedTask] = useState(null);
+
+  const handleUpdateModal = (task) => {
+    setSelectedTask(task);
+    setShowUpdateModal(true);
+  };
+
+  const handleUpdateSubmit = async (updatedData) => {
+    await updateTasks({ id: selectedTask._id, ...updatedData });
+    refetch();
+    alert("Task updated successfully");
+    setShowUpdateModal(false);
   };
 
   return (
@@ -120,7 +141,12 @@ const ExpenseTable = () => {
                   </td>
                   <td>
                     <div className="action">
-                      <button className="btn-update">Edit</button>
+                      <button
+                        onClick={() => handleUpdateModal(task)}
+                        className="btn-update"
+                      >
+                        Edit
+                      </button>
                       <button
                         onClick={() => toggleModal(date)}
                         className="btn-delete"
@@ -134,6 +160,13 @@ const ExpenseTable = () => {
             })}
           </tbody>
         </table>
+        {showUpdateModal && (
+          <UpdateDailyExpense
+            onClose={() => setShowUpdateModal(false)}
+            selectedTask={selectedTask}
+            onSubmit={handleUpdateSubmit}
+          />
+        )}
         {/* Delete Modal */}
         {isOpen && (
           <div className="modal-content">
