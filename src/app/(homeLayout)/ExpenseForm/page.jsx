@@ -25,9 +25,7 @@ const ExpenseForm = () => {
     );
     const currentMonth = tasks.find((task) => task.month === monthName);
     if (currentMonth) {
-      alert(
-        "you can add monthly limit only once, if you want to update limit please click update limit button"
-      );
+      alert("you can add monthly limit only once");
     } else {
       await addTasks(transformedData);
       reset();
@@ -125,9 +123,6 @@ const ExpenseForm = () => {
             </div>
           </div>
           <div className="limit-div">
-            <button type="submit" className="btn-primary">
-              Update monthly expense
-            </button>
             <button type="submit" className="btn-primary">
               Set limits
             </button>

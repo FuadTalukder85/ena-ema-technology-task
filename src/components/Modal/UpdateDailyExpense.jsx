@@ -18,6 +18,26 @@ const UpdateDailyExpense = ({ onClose, selectedTask, onSubmit }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    // Validate each category
+    for (const category of Object.keys(expenseData)) {
+      const enteredExpense = parseFloat(expenseData[category]) || 0;
+      const categoryLimit = parseFloat(selectedTask?.[category]?.limit || 0);
+      const categoryExpense = parseFloat(
+        selectedTask?.[category]?.expense || 0
+      );
+      const remainingLimit = categoryLimit - categoryExpense;
+
+      if (enteredExpense > remainingLimit) {
+        alert(
+          `Expense for ${category} exceeds the remaining limit of ${remainingLimit.toFixed(
+            2
+          )}!`
+        );
+        return;
+      }
+    }
+
     const updatedData = { expenseData };
     onSubmit(updatedData);
   };

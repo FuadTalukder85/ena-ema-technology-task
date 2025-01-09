@@ -62,6 +62,10 @@ const ExpenseTable = () => {
   const [selectedTask, setSelectedTask] = useState(null);
 
   const handleUpdateModal = (task) => {
+    if (!task || Object.keys(task).length === 0) {
+      alert("No data exists for this date");
+      return;
+    }
     setSelectedTask(task);
     setShowUpdateModal(true);
   };
