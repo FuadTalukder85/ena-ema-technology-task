@@ -18,10 +18,10 @@ const TasksApi = baseApi.injectEndpoints({
       providesTags: ["tasks"],
     }),
     updateTasks: builder.mutation({
-      query: ({ id, body }) => ({
+      query: ({ id, expenseData }) => ({
         url: `/api/tasks/${id}`,
         method: "PUT",
-        body,
+        body: { expenseData },
       }),
     }),
     deleteTasks: builder.mutation({

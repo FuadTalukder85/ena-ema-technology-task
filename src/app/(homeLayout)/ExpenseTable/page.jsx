@@ -39,7 +39,6 @@ const ExpenseTable = () => {
     return acc;
   }, {});
 
-  // Delete modal
   const [isOpen, setIsOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
 
@@ -59,7 +58,6 @@ const ExpenseTable = () => {
     setIsOpen(true);
   };
 
-  // Update modal
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
 
@@ -69,7 +67,10 @@ const ExpenseTable = () => {
   };
 
   const handleUpdateSubmit = async (updatedData) => {
-    await updateTasks({ id: selectedTask._id, ...updatedData });
+    await updateTasks({
+      id: selectedTask._id,
+      expenseData: updatedData.expenseData,
+    });
     refetch();
     alert("Task updated successfully");
     setShowUpdateModal(false);
@@ -110,33 +111,33 @@ const ExpenseTable = () => {
                 <tr key={date}>
                   <td>{date}</td>
                   <td>
-                    {task.groceries?.todayExpense > 0
-                      ? `$ ${task.groceries?.todayExpense}.00`
+                    {task.groceries?.expense > 0
+                      ? `$ ${task.groceries?.expense}.00`
                       : ""}
                   </td>
                   <td>
-                    {task.transportation?.todayExpense > 0
-                      ? `$ ${task.transportation?.todayExpense}.00`
+                    {task.transportation?.expense > 0
+                      ? `$ ${task.transportation?.expense}.00`
                       : ""}
                   </td>
                   <td>
-                    {task.healthcare?.todayExpense > 0
-                      ? `$ ${task.healthcare?.todayExpense}.00`
+                    {task.healthcare?.expense > 0
+                      ? `$ ${task.healthcare?.expense}.00`
                       : ""}
                   </td>
                   <td>
-                    {task.utility?.todayExpense > 0
-                      ? `$ ${task.utility?.todayExpense}.00`
+                    {task.utility?.expense > 0
+                      ? `$ ${task.utility?.expense}.00`
                       : ""}
                   </td>
                   <td>
-                    {task.charity?.todayExpense > 0
-                      ? `$ ${task.charity?.todayExpense}.00`
+                    {task.charity?.expense > 0
+                      ? `$ ${task.charity?.expense}.00`
                       : ""}
                   </td>
                   <td>
-                    {task.miscellaneous?.todayExpense > 0
-                      ? `$ ${task.miscellaneous?.todayExpense}.00`
+                    {task.miscellaneous?.expense > 0
+                      ? `$ ${task.miscellaneous?.expense}.00`
                       : ""}
                   </td>
                   <td>
@@ -167,7 +168,6 @@ const ExpenseTable = () => {
             onSubmit={handleUpdateSubmit}
           />
         )}
-        {/* Delete Modal */}
         {isOpen && (
           <div className="modal-content">
             <div className="modal-content-2">
@@ -182,13 +182,13 @@ const ExpenseTable = () => {
               </p>
               <div className="modal-actions">
                 <button onClick={() => setIsOpen(false)} className="btn-cancel">
-                  No, cancel
+                  Cancel
                 </button>
                 <button
                   onClick={() => handleDelete(taskByDate[selectedDate]._id)}
-                  className="btn-confirm"
+                  className="btn-delete"
                 >
-                  Yes, I'm sure
+                  Delete
                 </button>
               </div>
             </div>

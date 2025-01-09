@@ -1,12 +1,28 @@
 .update-expense {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 50;
+}
+.update-expense-content {
+  background-color: #f9fafb;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  padding: 24px;
+  width: 100%;
+  max-width: 1200px;
   position: relative;
-  padding: 20px 0px;
 }
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-  /* background-color: #e6ecf1; */
   color: #2a4766;
   padding: 5px;
 }
@@ -26,13 +42,18 @@ td {
 .update-expense input:focus {
   outline: none;
 }
-.modal-close-btn {
+.close-btn {
   position: absolute;
-  top: 0px;
+  top: 20px;
   right: 20px;
   background-color: #f0f0f0;
   padding: 7px 15px;
   border-radius: 5px;
   cursor: pointer;
   border: none;
+}
+.btn-update-expense {
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
 }
