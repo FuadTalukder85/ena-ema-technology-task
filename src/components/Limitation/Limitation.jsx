@@ -28,9 +28,6 @@ const Limitation = () => {
             }
           })}
       </div>
-      <button type="submit" className="btn-primary">
-        Update monthly expense
-      </button>
     </div>
   );
 };
